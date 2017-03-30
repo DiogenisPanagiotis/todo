@@ -1,3 +1,9 @@
 .true {
   text-decoration: line-through;
 }
+
+.list-group-item>.glyphicon-trash {
+  margin-top: 2px;
+  float: right;
+  text-decoration: none;
+}

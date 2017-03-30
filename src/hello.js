@@ -7,23 +7,42 @@ class Hello extends Component {
     this.state = {
       tasks: [],
       error: false,
-      strikeThrough: false,
       listId: 0
     };
   }
 
-  renderStrikeThrough(){
-    // console.log(e);
-    // let targ = e.target.classList;
-    // let item = document.getElementByID('targ');
-    // e.target.classList.add('true');
+  renderStrikeThrough(e){
+    let targ = e.target;
+    console.log(targ.id);
+    if (targ.classList.contains('true')) {
+      targ.classList.remove('true');
+    } else {
+      targ.classList.add('true');
+    }
+  }
+
+  deleteTask(e){
+    let id = e.target.id;
+    this.state.tasks.splice(id, 1);
     this.setState({
-      strikeThrough: !this.state.strikeThrough
+      tasks: this.state.tasks
     });
   }
+
+  renderDelete(){
+    const del = {
+      float: 'right'
+    };
+
+    return (
+      <span onClick={this.deleteTask.bind(this)} className="glyphicon glyphicon-trash" aria-hidden="true"></span>
+    );
+  }
+
   renderTasks(){
+    let that = this;
     let tasks = this.state.tasks;
-    const classes = `${this.state.strikeThrough} list-group-item`;
+    const classes = `list-group-item`;
     const listItem = {
       width: 300
     };
@@ -31,7 +50,15 @@ class Hello extends Component {
       <ul className='list-group'>
         {
           tasks.map((task, i) => {
-            return <li id={this.state.listId++} onClick={this.renderStrikeThrough.bind(this)} className={classes} key={i} style={listItem}>{task}</li>;
+            return <li
+                      id={this.state.listId++}
+                      onClick={this.renderStrikeThrough.bind(this)}
+                      className={classes}
+                      key={i}
+                      style={listItem}>
+                        {task}
+                        {that.renderDelete()}
+                   </li>;
           })
         }
       </ul>
