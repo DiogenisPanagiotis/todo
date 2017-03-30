@@ -1,0 +1,34 @@
+{
+  "name": "todo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack-dev-server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DiogenisPanagiotis/ToDo.git"
+  },
+  "author": "Diogenis Panagiotis (diogenis.panagiotis@gmail.com)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DiogenisPanagiotis/ToDo/issues"
+  },
+  "homepage": "https://github.com/DiogenisPanagiotis/ToDo#readme",
+  "dependencies": {
+    "react": "^15.4.2",
+    "react-dom": "^15.4.2"
+  },
+  "devDependencies": {
+    "babel-core": "^6.24.0",
+    "babel-loader": "^6.4.1",
+    "babel-preset-es2015": "^6.24.0",
+    "babel-preset-react": "^6.23.0",
+    "classnames": "^2.2.5",
+    "css-loader": "^0.27.3",
+    "style-loader": "^0.16.1",
+    "webpack": "^2.3.2",
+    "webpack-dev-server": "^2.4.2"
+  }
+}
