@@ -1,5 +1,24 @@
+body {
+  background-color: #fafafa;
+}
 .list-group-item {
   cursor: pointer;
+  background-color: #fafafa;
+  border: solid 1px #dbdbdb;
+  color: #999;
+}
+
+.form-control {
+  background-color: #fafafa;
+  border: solid 1px #dbdbdb;
+  box-shadow: none;
+  color: #999;
+}
+
+.form-control:focus {
+  background-color: #fff;
+  border: solid 1px #dbdbdb;
+  box-shadow: none;
 }
 
 .true {
@@ -14,4 +33,13 @@
 
 .list-group-item>.glyphicon-trash:hover {
   color: red;
+}
+
+.jumbotron {
+  background-color: #fff;
+  margin-left: 0px;
+}
+
+.alert {
+  padding: 10px;
 }

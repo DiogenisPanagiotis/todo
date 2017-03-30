@@ -44,7 +44,7 @@ class Hello extends Component {
     let tasks = this.state.tasks;
     const classes = `list-group-item`;
     const listItem = {
-      width: 300
+      width: 435
     };
     return (
       <ul className='list-group'>
@@ -66,7 +66,8 @@ class Hello extends Component {
   }
   renderError(){
     const alert = {
-      width: 300
+      width: 435,
+      height: 42
     };
     if (this.state.error) {
       return (
@@ -104,21 +105,28 @@ class Hello extends Component {
   render(){
     const input = {
       height: 42,
-      width: 300
+      width: 435
     };
     const hr = {
       marginLeft: 0,
-      width: 300
+      width: 435
     };
 
     return (
       <div className="container">
-        <h3>ToDo.</h3>
-        <hr style={hr}/>
-        <input ref='input' maxLength="30" placeholder='I need to...' onKeyPress={this.handleKeyPress.bind(this)} className='form-control' style={input}></input>
-        {this.renderError()}
-        <hr style={hr}/>
-        {this.renderTasks()}
+        <div className="row">
+          <div className="col-xs-12 col-sm-6 col-sm-offset-3">
+            <br/>
+            <div className="jumbotron">
+              <h3>ToDo.</h3>
+              <br />
+              <input ref='input' maxLength="30" placeholder='I need to...' onKeyPress={this.handleKeyPress.bind(this)} className='form-control' style={input}></input>
+              {this.renderError()}
+              <br />
+              {this.renderTasks()}
+            </div>
+          </div>
+        </div>
       </div>
     );
   }
