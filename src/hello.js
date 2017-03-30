@@ -115,7 +115,7 @@ class Hello extends Component {
       <div className="container">
         <h3>ToDo.</h3>
         <hr style={hr}/>
-        <input ref='input' placeholder='I need to...' onKeyPress={this.handleKeyPress.bind(this)} className='form-control' style={input}></input>
+        <input ref='input' maxLength="30" placeholder='I need to...' onKeyPress={this.handleKeyPress.bind(this)} className='form-control' style={input}></input>
         {this.renderError()}
         <hr style={hr}/>
         {this.renderTasks()}

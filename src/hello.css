@@ -1,3 +1,7 @@
+.list-group-item {
+  cursor: pointer;
+}
+
 .true {
   text-decoration: line-through;
 }
@@ -6,4 +10,8 @@
   margin-top: 2px;
   float: right;
   text-decoration: none;
+}
+
+.list-group-item>.glyphicon-trash:hover {
+  color: red;
 }
