@@ -6,7 +6,8 @@ class Hello extends Component {
     super();
     this.state = {
       tasks: [],
-      error: false
+      error: false,
+      listId: 0
     };
   }
 
@@ -22,6 +23,7 @@ class Hello extends Component {
 
   deleteTask(e){
     let id = e.target.id;
+    console.log(id);
     this.state.tasks.splice(id, 1);
     this.setState({
       tasks: this.state.tasks
@@ -50,6 +52,7 @@ class Hello extends Component {
         {
           tasks.map((task, i) => {
             return <li
+                    id={this.state.listId++}
                     onClick={this.renderStrikeThrough.bind(this)}
                     className={classes}
                     key={i}

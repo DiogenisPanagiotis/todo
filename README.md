@@ -2,8 +2,6 @@
 
 ToDo application built with React!
 
-![](https://image.ibb.co/gKsEWF/todo.png)
-
 ## Dependencies
 - react
 - react-dom
