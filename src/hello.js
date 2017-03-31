@@ -6,8 +6,7 @@ class Hello extends Component {
     super();
     this.state = {
       tasks: [],
-      error: false,
-      listId: 0
+      error: false
     };
   }
 
@@ -51,13 +50,12 @@ class Hello extends Component {
         {
           tasks.map((task, i) => {
             return <li
-                      id={this.state.listId++}
-                      onClick={this.renderStrikeThrough.bind(this)}
-                      className={classes}
-                      key={i}
-                      style={listItem}>
-                        {task}
-                        {that.renderDelete()}
+                    onClick={this.renderStrikeThrough.bind(this)}
+                    className={classes}
+                    key={i}
+                    style={listItem}>
+                      {task}
+                      {that.renderDelete()}
                    </li>;
           })
         }
