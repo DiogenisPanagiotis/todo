@@ -22,9 +22,18 @@ class Hello extends Component {
   }
 
   deleteTask(e){
-    let id = e.target.id;
-    console.log(id);
-    this.state.tasks.splice(id, 1);
+    let id = e.target.parentElement.id;
+    let tasks = this.state.tasks;
+    console.log("parent: ", e.target.parentElement);
+    console.log("id: ", id);
+    console.log("state.tasks: ",tasks);
+    for (let i = 0; i < tasks.length; i++) {
+      let bucket = tasks[i];
+      console.log(bucket[1], id);
+      if (bucket[1].toString() === id) {
+        tasks.splice(i, 1);
+      }
+    }
     this.setState({
       tasks: this.state.tasks
     });
@@ -52,12 +61,12 @@ class Hello extends Component {
         {
           tasks.map((task, i) => {
             return <li
-                    id={this.state.listId++}
+                    id={task[1]}
                     onClick={this.renderStrikeThrough.bind(this)}
                     className={classes}
                     key={i}
                     style={listItem}>
-                      {task}
+                      {task[0]}
                       {that.renderDelete()}
                    </li>;
           })
@@ -85,6 +94,7 @@ class Hello extends Component {
   handleKeyPress(e){
     if (e.key === 'Enter') {
       let input = e.target.value;
+      let id = this.state.listId;
       if (input === '') {
         console.log("Empty!");
         this.setState({
@@ -94,10 +104,15 @@ class Hello extends Component {
         this.setState({
           error: false
         });
-        this.state.tasks.push(input);
+        this.state.tasks.push([input, Math.random()]);
         this.setState({
           tasks: this.state.tasks
         });
+        this.state.listId++;
+        this.setState({
+          listId: this.state.listId
+        });
+
         this.refs.input.value = '';
       }
     }
