@@ -83,7 +83,8 @@ class Hello extends Component {
     const alert = {
       width: 435,
       height: 42,
-      paddingTop: 10
+      paddingTop: 10,
+      marginBottom: 0
     };
     if (this.state.error) {
       return (
@@ -98,6 +99,7 @@ class Hello extends Component {
       );
     }
   }
+
   handleKeyPress(e){
     if (e.key === 'Enter') {
       let input = e.target.value;
@@ -124,15 +126,28 @@ class Hello extends Component {
     }
   }
 
+  renderInput(){
+    const input = {
+      height: 42,
+      width: 435
+    };
+    return (
+      <input
+        ref='input'
+        maxLength="30"
+        placeholder='I need to...'
+        onKeyPress={this.handleKeyPress.bind(this)}
+        className='form-control'
+        style={input}>
+      </input>
+    );
+  }
+
   componentDidMount(){
     this.refs.input.focus();
   }
 
   render(){
-    const input = {
-      height: 42,
-      width: 435
-    };
     return (
       <div className="container">
         <div className="row">
@@ -141,7 +156,7 @@ class Hello extends Component {
             <div className="jumbotron">
               <h3>ToDo.</h3>
               <br />
-              <input ref='input' maxLength="30" placeholder='I need to...' onKeyPress={this.handleKeyPress.bind(this)} className='form-control' style={input}></input>
+              {this.renderInput()}
               {this.renderError()}
               <br />
               {this.renderTasks()}
