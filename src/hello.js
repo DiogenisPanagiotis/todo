@@ -43,7 +43,6 @@ class Hello extends Component {
     const del = {
       float: 'right'
     };
-
     return (
       <span onClick={this.deleteTask.bind(this)} className="glyphicon glyphicon-trash" aria-hidden="true"></span>
     );
@@ -74,18 +73,26 @@ class Hello extends Component {
       </ul>
     );
   }
+
+  renderDismiss(){
+    this.setState({ error: false});
+    this.refs.input.focus();
+  }
+
   renderError(){
     const alert = {
       width: 435,
-      height: 42
+      height: 42,
+      paddingTop: 10
     };
     if (this.state.error) {
       return (
         <div>
           <br/>
-          <div className="alert alert-danger" role="alert" style={alert}>
+          <div className="alert alert-danger alert-dismissable" style={alert} role="alert">
+            <button onClick={this.renderDismiss.bind(this)} type="button" className="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             <span className="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
-            <span className="sr-only">Error:</span> Oops! Try again.
+            <span className="sr-only">Error:</span> <strong>Oops!</strong> Try again.
           </div>
         </div>
       );
@@ -112,10 +119,13 @@ class Hello extends Component {
         this.setState({
           listId: this.state.listId
         });
-
         this.refs.input.value = '';
       }
     }
+  }
+
+  componentDidMount(){
+    this.refs.input.focus();
   }
 
   render(){
@@ -123,11 +133,6 @@ class Hello extends Component {
       height: 42,
       width: 435
     };
-    const hr = {
-      marginLeft: 0,
-      width: 435
-    };
-
     return (
       <div className="container">
         <div className="row">
