@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import './hello.css';
+import './todo.css';
 
-class Hello extends Component {
+class ToDo extends Component {
   constructor(){
     super();
     this.state = {
@@ -168,4 +168,4 @@ class Hello extends Component {
   }
 }
 
-export default Hello;
+export default ToDo;
