@@ -6,8 +6,7 @@ class ToDo extends Component {
     super();
     this.state = {
       tasks: [],
-      error: false,
-      listId: 0
+      error: false
     };
   }
 
@@ -40,9 +39,6 @@ class ToDo extends Component {
   }
 
   renderDelete(){
-    const del = {
-      float: 'right'
-    };
     return (
       <span onClick={this.deleteTask.bind(this)} className="glyphicon glyphicon-trash" aria-hidden="true"></span>
     );
@@ -51,10 +47,6 @@ class ToDo extends Component {
   renderTasks(){
     let that = this;
     let tasks = this.state.tasks;
-    const classes = `list-group-item`;
-    const listItem = {
-      width: 435
-    };
     return (
       <ul className='list-group'>
         {
@@ -62,11 +54,10 @@ class ToDo extends Component {
             return <li
                     id={task[1]}
                     onClick={this.renderStrikeThrough.bind(this)}
-                    className={classes}
-                    key={i}
-                    style={listItem}>
-                      {task[0]}
-                      {that.renderDelete()}
+                    className='list-group-item'
+                    key={i}>
+                    {task[0]}
+                    {that.renderDelete()}
                    </li>;
           })
         }
@@ -93,7 +84,7 @@ class ToDo extends Component {
           <div className="alert alert-danger alert-dismissable" style={alert} role="alert">
             <button onClick={this.renderDismiss.bind(this)} type="button" className="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             <span className="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
-            <span className="sr-only">Error:</span> <strong>Oops!</strong> Try again.
+            <span className="sr-only">Error:</span> <strong>Oops! Try again.</strong>
           </div>
         </div>
       );
@@ -103,34 +94,20 @@ class ToDo extends Component {
   handleKeyPress(e){
     if (e.key === 'Enter') {
       let input = e.target.value;
-      let id = this.state.listId;
       if (input === '') {
         console.log("Empty!");
-        this.setState({
-          error: true
-        });
+        this.setState({ error: true });
       } else {
-        this.setState({
-          error: false
-        });
+        this.setState({ error: false });
         this.state.tasks.push([input, Math.random()]);
-        this.setState({
-          tasks: this.state.tasks
-        });
-        this.state.listId++;
-        this.setState({
-          listId: this.state.listId
-        });
+        this.setState({ tasks: this.state.tasks });
         this.refs.input.value = '';
       }
     }
   }
 
   renderInput(){
-    const input = {
-      height: 42,
-      width: 435
-    };
+    const input = { height: 42, width: 435 };
     return (
       <input
         ref='input'

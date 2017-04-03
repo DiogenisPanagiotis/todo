@@ -31,6 +31,13 @@ body {
   text-decoration: none;
 }
 
+.list-group-item>.glyphicon-edit {
+  margin-top: 2px;
+  float: right;
+  text-decoration: none;
+  padding-right: 5px;
+}
+
 .list-group-item>.glyphicon-trash:hover {
   color: red;
 }
